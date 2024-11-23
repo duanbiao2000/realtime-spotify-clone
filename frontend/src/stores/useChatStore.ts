@@ -10,6 +10,7 @@ interface ChatStore {
 	socket: any;
 	isConnected: boolean;
 	onlineUsers: Set<string>;
+// 用户活动，使用Map存储，键为用户ID，值为活动名称
 	userActivities: Map<string, string>;
 	messages: Message[];
 	selectedUser: User | null;
@@ -22,6 +23,7 @@ interface ChatStore {
 	setSelectedUser: (user: User | null) => void;
 }
 
+// 定义一个变量baseURL，根据当前环境模式来设置不同的值
 const baseURL = import.meta.env.MODE === "development" ? "http://localhost:5000" : "/";
 
 const socket = io(baseURL, {
